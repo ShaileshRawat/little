@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <css src="mage/calendar.css"/>
+        <script src="requirejs/require.js"/>
+		
+		<!-- Fontawesome -->
+		<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
+		<css src="fonts/themify-icons/css/themify-icons.css" />
+		<css src="fonts/flaticon/css/flaticon.css" />	
+		<css src="fonts/avenir-icons/css/avenir-icon.css" />	
+		
+		
+			<!-- Bootstrap -->
+	<!-- 	<css src="css/bootstrap.min.css"/>  -->
+		<css src="css/layout.css" />
+		<css src="css/owl.carousel.min.css" />
+		<css src="css/owl.theme.default.min.css" />
+		<script src="js/owl.carousel.min.js" />
+		<script src="js/custom.js" />		
+		
+    </head>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="head.polyfill" as="polyfill" template="Magento_Theme::js/polyfill.phtml" before="-"/>
+            <block class="Magento\Framework\View\Element\Js\Components" name="head.components" as="components" template="Magento_Theme::js/components.phtml" before="-"/>
+        </referenceContainer>
+    </body>
+</page>

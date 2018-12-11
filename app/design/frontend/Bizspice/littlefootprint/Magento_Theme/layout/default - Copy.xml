@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default_head_blocks"/>
+	
+    <body>		
+	
+	
+	
+	   <referenceBlock name="header.links">
+		    <block class="Magento\Framework\View\Element\Template" name="catalog.compare.link" after="register-link"
+                   template="Magento_Catalog::product/compare/link.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="compareProducts" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>    
+		</referenceBlock>
+	
+		<referenceContainer name="page.wrapper">
+			<block class="Magento\Theme\Block\Html\Header" name="biz_header" template="html/header.phtml" before="-">
+			
+				<block class="Magento\Framework\View\Element\Html\Links" name="links.header">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">links header</argument>
+                    </arguments>
+                </block>
+				
+					<block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">header links</argument>
+                    </arguments>
+                </block>
+				
+				 <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                    <arguments>
+                        <argument name="logo_img_width" xsi:type="number">232</argument>
+                        <argument name="logo_img_height" xsi:type="number">73</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml"/>
+            </block>			
+			
+		</referenceContainer>
+		
+		
+		
+		<move element="minicart" destination="biz_header"/>			
+		<move element="top.search" destination="biz_header"/>
+		<move element="logo" destination="biz_header"/>
+		<move element="navigation.sections" destination="biz_header"/>
+		
+
+		
+		<container name="page.wrapper" as="page_wrapper" htmlTag="div" htmlClass="page-wrapper">
+            <container name="main.content.fix" htmlTag="main" htmlId="maincontent" htmlClass="page-main-pal container">
+			    <container name="columns.top" label="Before Main Columns"/>
+                <container name="columns" htmlTag="div" htmlClass="alocolumns clearfix">
+                    <container name="main" label="Main Content Container" htmlTag="div" htmlClass="column main"/>
+                </container>
+            </container>
+        </container>
+		
+		
+		<referenceContainer name="footer-container">            
+			<container name="footer-top" label="Footer Top" htmlTag="div" htmlClass="block-footer-top" before="-">
+                <block class="Magento\Cms\Block\Block" name="block_footer_top">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">block_footer_top</argument>
+                    </arguments>
+                </block>
+            </container>
+			<container name="footer-bottom" label="Footer Bottom" htmlTag="div" htmlClass="block-footer-bottom" after="footer-top">
+                <block class="Magento\Cms\Block\Block" name="block_footer_bottom">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">block_footer_bottom</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+
+		<!--<move element="navigation.sections" destination="biz_header"/> -->
+
+		<referenceBlock name="report.bugs" remove="true"/>
+		<referenceBlock name="footer_links" remove="true"/>
+		<referenceBlock name="form.subscribe" remove="true"/>
+		<referenceBlock name="store_switcher" remove="true"/>
+		<referenceContainer name="footer" remove="true"/> 
+		<referenceContainer name="header.container" remove="true"/>
+		<referenceContainer name="header.panel" remove="true"/>
+		<referenceContainer name="header-wrapper" remove="false"/>
+		<referenceBlock name="advanced-search-link" remove="true"/>
+		<referenceBlock name="catalog.compare.link" remove="true"/>
+		<referenceBlock name="breadcrumbs" remove="true" />
+		<referenceBlock name="main.content" remove="true" />
+
+
+		
+		
+    </body>
+</page>

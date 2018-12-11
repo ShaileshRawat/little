@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View\AbstractView */?>
+<?php $_product = $block->getProduct() ?>
+
+
+
+<div class="availability-stock">
+	<div class="availability-inner">
+		<div class="availability-mdl">
+			<img src="<?php echo $this->getViewFileUrl('images/in-stock-icon.png'); ?>" alt="In Stock">
+			<?php if ($block->displayProductStockStatus()): ?>
+				<?php if ($_product->isAvailable()): ?>
+					<div class="stock available" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+						<span>						
+						 <?php 
+							$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+							$StockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');							
+						?>
+							<?= /* @escapeNotVerified */ __('In stock') ?>
+							<strong><?php echo $StockState->getStockQty($_product->getId(), $_product->getStore()->getWebsiteId()); ?> Available</strong>
+						</span>
+					</div>
+				<?php else: ?>
+					<div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+						<span><?= /* @escapeNotVerified */ __('Out of stock') ?></span>
+					</div>
+					
+				<?php endif; ?>
+			<?php endif; ?>	
+		</div>
+	</div>
+	
+	<div class="flat-rate">
+		<div id="flat_ship_message" class="">
+			<img src="<?php echo $this->getViewFileUrl('images/ship-flat.png'); ?>" alt="Flat Shipping">
+			<div class="stock available" title="Availability">
+				<span>
+					<strong>$4.00 Flat Rate</strong> Shipping on all order
+				</span>
+			</div>
+		</div>
+	</div>
+	
+</div>
+

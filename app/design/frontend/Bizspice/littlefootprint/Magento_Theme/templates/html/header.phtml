@@ -1,0 +1,169 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+$welcomeMessage = $block->getWelcome();
+?>
+
+<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$baseUrl = $storeManager->getStore()->getBaseUrl();
+?>
+<link href="//fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,hebrew,latin-ext,vietnamese" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes&amp;subset=latin-ext" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+
+
+<div class="mobile-header">
+		<div class="h-m-column">
+			<a href="<?php echo $baseUrl;?>" target="_self">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 486.406 486.406" style="enable-background:new 0 0 486.406 486.406;" xml:space="preserve" width="30px" height="30px">
+				<path d="M481.198,224.116L253.202,26.52c-5.715-4.955-14.197-4.955-19.912,0l-81.288,70.405V68.41      c0-16.781-13.619-30.399-30.399-30.399S91.203,51.63,91.203,68.41v81.197l-85.97,74.509c-6.323,5.502-7.022,15.109-1.52,21.462      c5.533,6.323,15.109,6.992,21.462,1.52L243.201,58.135l217.995,188.963c2.918,2.493,6.414,3.709,9.971,3.709      c4.286,0,8.451-1.794,11.461-5.229C488.22,239.225,487.491,229.679,481.198,224.116z" fill="#FFFFFF"></path>
+				<path d="M262.443,136.14c-5.563-4.59-12.403-6.931-19.243-6.931c-6.84,0-13.68,2.31-19.273,6.931      L71.93,260.747c-7.053,5.776-11.126,14.379-11.126,23.529v148.927c0,16.781,13.619,30.399,30.399,30.399h91.198V311.606h121.598      v151.997h91.198c16.75,0,30.399-13.619,30.399-30.399V284.277c0-9.181-4.104-17.753-11.157-23.499L262.443,136.14z" fill="#FFFFFF"></path>
+				</svg>
+			</a>
+		</div>
+		
+		<div class="h-m-column">		
+			<span data-action="toggle-nav" class="action nav-toggle"></span>
+		</div>		
+				
+		<div class="h-m-column  mob-account">
+			<div class="my-acc-link">
+				<i class="fas fa-user" style="font-size: 30px;"></i>
+				<div class="myaccount-dropdown">
+					<?php echo $this->getChildHtml('header.links'); ?>
+				</div>
+			</div>
+		</div>
+		
+		<div class="h-m-column">			
+			<?php
+			if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile') || strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'android')) {
+			   echo $this->getChildHtml('top.search');
+			} ?>
+		</div>	
+
+	</div>
+ 
+
+<div class="top-header">
+	<div class="page-main">
+		<div class="row">
+			<div class="col-lg-7 col-md-7 col-sm-7">
+				<div class="header-contact">
+					<p class="head-email"><span><i class="far fa-envelope"></i> Email Us : <a href="mailto:info@littlefootprint.co.uk">info@littlefootprint.co.uk</a></span></p>
+					<p class="head-phone"><span><i class="fas fa-phone"></i>Call Us : <a href="tel:07581 883267">07581 883267</a></span></p>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-5">
+				<div class="header-social-wrap">
+					<div class="header-social">
+						<p>Stay Connected :</p>
+						<div class="header-rss">
+						<a href="https://www.facebook.com/LittleFootprintOnline" target="_blank" class="">
+							<span class="fab fa-facebook-f"></span>
+						</a>
+						<a href="https://twitter.com/FootprintLittle" target="_blank" class="">
+							<span class="fab fa-twitter">
+							</span>
+						</a>
+						<a href="https://www.pinterest.com/footprintlittle/" target="_blank" class="">
+							<span class="fab fa-pinterest"></span>
+						</a>
+						<a href="https://www.instagram.com/little_footprint/" target="_blank" class="">
+							<span class="fab fa-instagram"></span>
+						</a>
+
+					</div>           
+				</div>
+			  </div>
+		  </div>
+		</div>
+	</div>
+</div>
+
+
+	<div class="header-content">
+		<div class="page-main">
+		
+		<div class="d-flex justify-content-between">
+			<div class="content-logo">
+				<div class="header-logo">
+					<?php echo $this->getChildHtml('logo'); ?>
+				</div>
+			</div>
+			
+			
+			<div class="top-search-rock">
+				<?php echo $this->getChildHtml('top.search'); ?>
+			</div>
+			
+			
+			<div class="account-cart-wrapper">
+				<a href="javascript:void(0);" class="skip-account">
+					<span class="label">My Account</span>
+				</a>
+				<?php echo $this->getChildHtml('header.links'); ?>
+			</div>
+			<div class="top-cart-rock">
+				
+				<div class="content-cart">							
+					<?php echo $this->getChildHtml('minicart'); ?>
+				</div>	
+				
+				
+				
+			</div>
+			
+		</div>
+		</div>
+	</div>
+	<?php echo $this->getChildHtml('navigation.sections'); ?>
+	
+	<div class="shipping-rate">
+		 <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('shipping_rates')->toHtml();?>
+	</div>
+
+
+
+<?php switch ($block->getShowPart()):
+    case 'welcome': ?>
+        <li class="greet welcome" data-bind="scope: 'customer'">
+            <!-- ko if: customer().fullname  -->
+            <span data-bind="text: new String('<?= $block->escapeHtml(__('Welcome, %1!', '%1')) ?>').replace('%1', customer().fullname)">
+            </span>
+            <!-- /ko -->
+            <!-- ko ifnot: customer().fullname  -->
+            <span data-bind='html:"<?= $block->escapeHtml($welcomeMessage) ?>"'></span>
+            <?= $block->getBlockHtml('header.additional') ?>
+            <!-- /ko -->
+        </li>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+    <?php break; ?>
+
+    <?php case 'other': ?>
+        <?= $block->getChildHtml() ?>
+    <?php break; ?>
+
+<?php endswitch; ?>

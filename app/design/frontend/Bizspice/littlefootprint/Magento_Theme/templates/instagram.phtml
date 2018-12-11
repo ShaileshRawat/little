@@ -1,0 +1,51 @@
+<?php
+       $url =  'https://api.instagram.com/v1/users/196475462/media/recent/?access_token=196475462.1677ed0.5eba3b63bf464a16ae05f490e4cb46f2&count=12';
+     
+   
+$imageResolution =  "150x150";
+
+       $args = stream_context_create(array('http' => array('timeout' => 2500,)));
+       //for Live server
+       try {
+           $instagramFeedsData = file_get_contents($url, false, $args);
+
+
+       //for Local Server
+//        $instagramFeedsData = $helper->getInstangramData($url);
+
+       $instagramFeeds = json_decode($instagramFeedsData);
+       
+       ///var_dump($instagramFeeds);exit;
+       $instangramData = $instagramFeeds->data;
+
+       $count = 1;
+       foreach ($instangramData as $instagramFeed) {
+ 
+           // if ($imageNumber < $count) {
+           //     break;
+           // }
+           $instagramImage = $instagramFeed->images->standard_resolution->url;
+
+           $count++;
+           ?>
+
+           <?php
+           $caption_text = 'Instagram';
+           if (is_object($instagramFeed->caption)) {
+               $caption_text = $instagramFeed->caption->text;
+           }
+           ?>
+           <div class="instagram-feed-item">
+
+               <a href ="<?php echo $instagramFeed->link; ?>" target="_blank">
+                   <img src="<?php echo $instagramImage; ?>" title="<?php echo $caption_text; ?>" alt="<?php echo $caption_text; ?>"/>
+               </a>
+             
+           </div>
+           <?php
+       }
+       } catch (Exception $e) {
+
+       }        
+   
+   ?>
